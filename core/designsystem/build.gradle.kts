@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "com.novitaguok.socialexit.core.designsystem"
+    namespace = "com.owlite.socialexit.core.designsystem"
     compileSdk {
         version = release(37)
     }
