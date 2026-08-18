@@ -24,3 +24,5 @@ dependencyResolutionManagement {
 
 rootProject.name = "Social Exit"
 include(":app")
+
+include(":core:designsystem")
