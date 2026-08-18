@@ -22,7 +22,11 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Social Exit"
+rootProject.name = "socialexit"
+
+enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 include(":app")
 
 include(":core:designsystem")
+
+include(":feature:home:api")
