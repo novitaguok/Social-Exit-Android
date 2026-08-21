@@ -4,13 +4,13 @@ plugins {
 }
 
 android {
-    namespace = "com.novitaguok.socialexit"
+    namespace = "com.owlite.socialexit"
     compileSdk {
         version = release(37)
     }
 
     defaultConfig {
-        applicationId = "com.novitaguok.socialexit"
+        applicationId = "com.owlite.socialexit"
         minSdk = 27
         targetSdk = 37
         versionCode = 1
