@@ -3,7 +3,7 @@ plugins {
 }
 
 android {
-    namespace = "com.novitaguok.feature.home.api"
+    namespace = "com.owlite.feature.home.api"
     compileSdk {
         version = release(37)
     }
