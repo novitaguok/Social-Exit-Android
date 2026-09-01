@@ -28,7 +28,13 @@ rootProject.name = "socialexit"
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 include(":app")
 
+include(":core:common")
+include(":core:data")
 include(":core:designsystem")
+include(":core:domain")
+include(":core:model")
+include(":core:navigation")
+include(":core:network")
 
 include(":feature:home:api")
-include(":core:navigation")
+include(":feature:home:impl")

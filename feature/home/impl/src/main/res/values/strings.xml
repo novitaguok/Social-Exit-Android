@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="feature_home_impl_status">STATUS:</string>
+    <string name="feature_home_impl_status_idle">Ready to arm</string>
+    <string name="feature_home_impl_status_armed">Guardian active — waiting</string>
+    <string name="feature_home_impl_status_calling">Call in progress</string>
+    <string name="feature_home_impl_status_cooldown">Resting — 60s until next arm</string>
+    <string name="feature_home_impl_status_error">Trigger failed — check settings</string>
+    <string name="feature_home_impl_button_general">ARM GUARDIAN ANGEL</string>
+    <string name="feature_home_impl_button_armed">DISARM — SITUATION RESOLVED</string>
+    <string name="feature_home_impl_button_error">RETRY</string>
+    <string name="feature_home_impl_trigger_method">TRIGGER METHOD</string>
+    <string name="feature_home_impl_choose_script">CHOOSE SCRIPT</string>
+    <string name="feature_home_impl_manage_all">Manage all</string>
+</resources>
