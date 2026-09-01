@@ -29,7 +29,7 @@ val provider = GoogleFont.Provider(
     certificates = R.array.com_google_android_gms_fonts_certs,
 )
 
-val fontOrbitron = GoogleFont("Orbitron")
+val fontOrbitron = GoogleFont("Hanken Grotesk")
 val OrbitronFontFamily = FontFamily(
     Font(
         googleFont = fontOrbitron,

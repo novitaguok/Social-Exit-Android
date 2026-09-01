@@ -20,6 +20,7 @@ androidxLifecycle = "2.10.0"
 androidxLifecycleViewModelNavigation3 = "2.10.0"
 androidxNavigation3 = "1.0.0"
 androidxTestExt = "1.3.0-rc01"
+coil = "2.7.0"
 composeGooglefonts = "1.6.8"
 composeMaterial3 = "1.4.0"
 hilt = "2.59"
@@ -71,6 +72,7 @@ androidx-navigation3-ui = { group = "androidx.navigation3", name = "navigation3-
 androidx-room3-runtime = { group = "androidx.room3", name = "room3-runtime", version.ref = "room3" }
 androidx-room3-compiler = { group = "androidx.room3", name = "room3-compiler", version.ref = "room3" }
 androidx-test-ext = { group = "androidx.test.ext", name = "junit-ktx", version.ref = "androidxTestExt" }
+coil-kt-compose = { group = "io.coil-kt", name = "coil-compose", version.ref = "coil" }
 hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt" }
 hilt-android-testing = { group = "com.google.dagger", name = "hilt-android-testing", version.ref = "hilt" }
 hilt-compiler = { group = "com.google.dagger", name = "hilt-compiler", version.ref = "hilt" }
@@ -99,3 +101,6 @@ socialexit-android-library-compose = { id = "socialexit.android.library.compose"
 socialexit-android-room = { id = "socialexit.android.room" }
 socialexit-hilt = { id = "socialexit.hilt" }
 socialexit-jvm-library = { id = "socialexit.jvm.library" }
+
+[bundles]
+androidx-compose-ui-test = ["androidx-compose-ui-test-junit4", "androidx-compose-ui-test-manifest"]
