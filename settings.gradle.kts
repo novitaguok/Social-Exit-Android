@@ -31,3 +31,4 @@ include(":app")
 include(":core:designsystem")
 
 include(":feature:home:api")
+include(":core:navigation")

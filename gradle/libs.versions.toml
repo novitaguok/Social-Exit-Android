@@ -10,11 +10,16 @@ kotlin = "2.2.10"
 composeBom = "2026.02.01"
 appcompat = "1.6.1"
 material = "1.10.0"
+
 # Additional
 androidDesugarJdkLibs = "2.1.4"
 androidxComposeMaterial3Adaptive = "1.1.0-rc01"
 androidxComposeMaterial3AdaptiveNavigation3 = "1.3.0-alpha04"
 androidxHiltLifecycleViewModelCompose = "1.3.0-alpha02"
+androidxLifecycle = "2.10.0"
+androidxLifecycleViewModelNavigation3 = "2.10.0"
+androidxNavigation3 = "1.0.0"
+androidxTestExt = "1.3.0-rc01"
 composeGooglefonts = "1.6.8"
 composeMaterial3 = "1.4.0"
 hilt = "2.59"
@@ -59,8 +64,13 @@ androidx-compose-runtime = { group = "androidx.compose.runtime", name = "runtime
 androidx-compose-ui-text-google-fonts = { module = "androidx.compose.ui:ui-text-google-fonts", version.ref = "composeGooglefonts" }
 androidx-compose-ui-util = { group = "androidx.compose.ui", name = "ui-util" }
 androidx-hilt-lifecycle-viewModelCompose = { group = "androidx.hilt", name = "hilt-lifecycle-viewmodel-compose", version.ref = "androidxHiltLifecycleViewModelCompose" }
+androidx-lifecycle-viewModel-navigation3 = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-navigation3", version.ref = "androidxLifecycleViewModelNavigation3" }
+androidx-lifecycle-viewModel-testing = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-testing", version.ref = "androidxLifecycle" }
+androidx-navigation3-runtime = { group = "androidx.navigation3", name = "navigation3-runtime", version.ref = "androidxNavigation3" }
+androidx-navigation3-ui = { group = "androidx.navigation3", name = "navigation3-ui", version.ref = "androidxNavigation3" }
 androidx-room3-runtime = { group = "androidx.room3", name = "room3-runtime", version.ref = "room3" }
 androidx-room3-compiler = { group = "androidx.room3", name = "room3-compiler", version.ref = "room3" }
+androidx-test-ext = { group = "androidx.test.ext", name = "junit-ktx", version.ref = "androidxTestExt" }
 hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt" }
 hilt-android-testing = { group = "com.google.dagger", name = "hilt-android-testing", version.ref = "hilt" }
 hilt-compiler = { group = "com.google.dagger", name = "hilt-compiler", version.ref = "hilt" }
