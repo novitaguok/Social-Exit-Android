@@ -1,16 +1,17 @@
 plugins {
-    alias(libs.plugins.android.application)
-    alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.socialexit.android.application)
+    alias(libs.plugins.socialexit.android.application.compose)
+    alias(libs.plugins.socialexit.android.application.flavors)
 }
 
 android {
-    namespace = "com.novitaguok.socialexit"
+    namespace = "com.owlite.socialexit"
     compileSdk {
         version = release(37)
     }
 
     defaultConfig {
-        applicationId = "com.novitaguok.socialexit"
+        applicationId = "com.owlite.socialexit"
         minSdk = 27
         targetSdk = 37
         versionCode = 1
