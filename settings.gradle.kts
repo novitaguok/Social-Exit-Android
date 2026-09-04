@@ -29,6 +29,9 @@ enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 include(":app")
 
 include(":core:designsystem")
+include(":core:navigation")
 
 include(":feature:home:api")
-include(":core:navigation")
+include(":feature:home:impl")
+include(":core:domain")
+include(":core:model")

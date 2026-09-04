@@ -1,24 +1,11 @@
 plugins {
-    alias(libs.plugins.android.library)
-    alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.socialexit.android.library)
+    alias(libs.plugins.socialexit.android.library.compose)
 }
 
 android {
     namespace = "com.owlite.socialexit.core.designsystem"
-    compileSdk {
-        version = release(37)
-    }
-
-    defaultConfig {
-        minSdk = 27
-
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-    }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
-    }
-
+    testOptions.unitTests.isIncludeAndroidResources = true
 }
 
 dependencies {
@@ -31,4 +18,8 @@ dependencies {
     api(libs.androidx.compose.ui.util)
 
     implementation(libs.androidx.compose.ui.text.google.fonts)
+    implementation(libs.coil.kt.compose)
+
+    // TODO: check NIA
+    testImplementation(libs.hilt.android.testing)
 }
