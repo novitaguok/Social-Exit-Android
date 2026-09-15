@@ -1,4 +1,4 @@
-package com.owlite.feature.home.api
+package com.owlite.socialexit.feature.home.api
 
 import org.junit.Test
 

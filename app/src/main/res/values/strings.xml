@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Social Exit</string>
+    <string name="not_connected">Not connected to the internet</string>
 </resources>

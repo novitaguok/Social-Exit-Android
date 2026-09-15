@@ -8,6 +8,7 @@ import org.gradle.internal.Actions.with
 import org.gradle.kotlin.dsl.apply
 import org.gradle.kotlin.dsl.configure
 import org.gradle.kotlin.dsl.dependencies
+import kotlin.text.get
 
 class AndroidLibraryConventionPlugin : Plugin<Project> {
     override fun apply(target: Project) {
@@ -25,6 +26,8 @@ class AndroidLibraryConventionPlugin : Plugin<Project> {
             }
 
             dependencies {
+                "implementation"(libs.findLibrary("androidx.tracing.ktx").get())
+
                 "testImplementation"(libs.findLibrary("junit").get())
                 // TODO: check NIA
             }

@@ -1,4 +1,4 @@
-package com.owlite.feature.home.api
+package com.owlite.socialexit.feature.home.api
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

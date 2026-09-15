@@ -13,7 +13,7 @@ android {
 dependencies {
     implementation(libs.androidx.appcompat)
     implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.lifecycle.viewModel.navigation3)
+    implementation(libs.androidx.lifecycle.viewmodel.navigation3)
     implementation(libs.material)
 
     api(libs.androidx.navigation3.runtime)
@@ -25,5 +25,5 @@ dependencies {
     androidTestImplementation(libs.androidx.compose.ui.test.junit4)
     androidTestImplementation(libs.androidx.test.ext)
     androidTestImplementation(libs.androidx.compose.ui.test.manifest)
-    androidTestImplementation(libs.androidx.lifecycle.viewModel.testing)
+    androidTestImplementation(libs.androidx.lifecycle.viewmodel.testing)
 }
