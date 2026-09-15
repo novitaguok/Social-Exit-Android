@@ -20,9 +20,11 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.selection.selectable
 import androidx.compose.foundation.selection.selectableGroup
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.CheckCircle
@@ -50,7 +52,9 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
+import androidx.constraintlayout.compose.Dimension
 import com.owlite.socialexit.core.designsystem.theme.SocialExitTheme
+import com.owlite.socialexit.core.designsystem.theme.SpacingTokens.RadiusFull
 import com.owlite.socialexit.core.designsystem.theme.SpacingTokens.RadiusLg
 import com.owlite.socialexit.core.designsystem.theme.SpacingTokens.RadiusMd
 import com.owlite.socialexit.core.designsystem.theme.SpacingTokens.Space2Xl
@@ -59,6 +63,7 @@ import com.owlite.socialexit.core.designsystem.theme.SpacingTokens.SpaceLg
 import com.owlite.socialexit.core.designsystem.theme.SpacingTokens.SpaceMd
 import com.owlite.socialexit.core.designsystem.theme.SpacingTokens.SpaceSm
 import com.owlite.socialexit.core.designsystem.theme.SpacingTokens.SpaceXl
+import com.owlite.socialexit.core.designsystem.theme.SpacingTokens.SpaceXs
 import com.owlite.socialexit.core.designsystem.theme.SpacingTokens.SpaceXxs
 
 @Composable
@@ -294,26 +299,50 @@ data class ScriptOption(
     val title: String,
     val desc: String,
     val category: String,
-    val successRate: Int,
+    val successRate: Float,
     val isActive: Boolean,
 )
 
 // TODO: move to data
 val dummyScript = listOf(
     ScriptOption(
-        icon = com.google.android.material.R.drawable.abc_ic_star_black_16dp,
+        icon = R.drawable.feature_home_impl_ic_android_black_24dp,
         title = "Dummy Title",
         desc = "Dummy desc",
         category = "Home",
-        successRate = 87,
+        successRate = 87f,
         isActive = true
+    ),
+    ScriptOption(
+        icon = R.drawable.feature_home_impl_ic_android_black_24dp,
+        title = "Dummy Title 2",
+        desc = "Dummy desc 2",
+        category = "Family",
+        successRate = 90f,
+        isActive = false
+    ),
+    ScriptOption(
+        icon = R.drawable.feature_home_impl_ic_android_black_24dp,
+        title = "Dummy Title 3",
+        desc = "Dummy desc 3",
+        category = "Home",
+        successRate = 98f,
+        isActive = false
+    ),
+    ScriptOption(
+        icon = R.drawable.feature_home_impl_ic_android_black_24dp,
+        title = "Dummy Title 4",
+        desc = "Dummy desc 4",
+        category = "Family",
+        successRate = 90f,
+        isActive = false
     )
 )
 
 @Composable
 fun SectionChooseScript() {
     // TODO: later take from VM
-    var selectedScript by rememberSaveable { mutableStateOf(dummyScript.first()) }
+    var selectedScript by remember { mutableStateOf(dummyScript.first()) }
 
     Column {
         Row(
@@ -352,10 +381,7 @@ fun ChooseScriptSelectionGroup(
     onScriptSelected: (ScriptOption) -> Unit
 ) {
     Column(
-        modifier = Modifier
-            .fillMaxWidth()
-            .height(108.dp)
-            .selectableGroup(),
+        modifier = Modifier.selectableGroup(),
         verticalArrangement = Arrangement.spacedBy(space = SpaceMd)
     ) {
         dummyScript.forEach { script ->
@@ -363,7 +389,9 @@ fun ChooseScriptSelectionGroup(
                 isSelected = (script == selectedScript),
                 onClick = { onScriptSelected(script) },
                 option = script,
-                modifier = Modifier.fillMaxSize()
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(IntrinsicSize.Max)
             )
         }
     }
@@ -371,7 +399,7 @@ fun ChooseScriptSelectionGroup(
 
 @Composable
 fun ChooseScriptRadioButton(
-    isSelected: Boolean,
+    isSelected: Boolean, // TODO: make sure not used
     onClick: () -> Unit,
     option: ScriptOption,
     modifier: Modifier = Modifier
@@ -388,6 +416,7 @@ fun ChooseScriptRadioButton(
                 color = color,
                 shape = RoundedCornerShape(SpaceMd)
             )
+            .height(108.dp)
             .padding(SpaceMd)
             .selectable(
                 selected = isSelected,
@@ -397,11 +426,15 @@ fun ChooseScriptRadioButton(
                 indication = null
             ),
     ) {
-        val (icon, title, desc, category, successRate, activeStatus) = createRefs()
+        val (icon, titleStatus, desc, category, successRate) = createRefs()
 
         Box(
             modifier = Modifier
                 .size(Space4Xl)
+                .background(
+                    color = SocialExitTheme.colors.onBackground,
+                    shape = RoundedCornerShape(SpaceMd)
+                )
                 .constrainAs(icon) {
                     start.linkTo(parent.start)
                     top.linkTo(parent.top)
@@ -415,38 +448,80 @@ fun ChooseScriptRadioButton(
                 contentDescription = option.title
             )
         }
-    }
 
-//    Column(
-//        modifier = modifier
-//            .border(
-//                width = borderWidth,
-//                color = color,
-//                shape = RoundedCornerShape(SpaceMd)
-//            )
-//            .padding(SpaceMd)
-//            .selectable(
-//                selected = isSelected,
-//                role = Role.RadioButton,
-//                onClick = onClick,
-//                interactionSource = remember { MutableInteractionSource() },
-//                indication = null
-//            ),
-//        horizontalAlignment = Alignment.CenterHorizontally,
-//    ) {
-//        Icon(
-//            painter = painterResource(option.icon),
-//            tint = color,
-//            contentDescription = option.title
-//        )
-//        Spacer(modifier = Modifier.height(SpaceSm))
-//        Text(
-//            text = option.title,
-//            style = SocialExitTheme.typography.labelMedium,
-//            textAlign = TextAlign.Center,
-//            color = color
-//        )
-//    }
+        Row(
+            modifier = Modifier
+                .constrainAs(titleStatus) {
+                    top.linkTo(parent.top)
+                    start.linkTo(icon.end, margin = SpaceLg)
+                    end.linkTo(parent.end)
+                    width = Dimension.fillToConstraints
+                },
+            horizontalArrangement = Arrangement.SpaceBetween
+        ) {
+            Text(
+                text = option.title,
+                style = SocialExitTheme.typography.bodyLarge
+            )
+            if (isSelected) {
+                Text(
+                    modifier = Modifier
+                        .background(
+                            color = SocialExitTheme.colors.primary,
+                            shape = RoundedCornerShape(RadiusFull)
+                        )
+                        .padding(horizontal = SpaceSm, vertical = SpaceXxs),
+                    text = stringResource(R.string.feature_home_impl_active),
+                    style = SocialExitTheme.typography.labelOverline,
+                    color = SocialExitTheme.colors.onPrimary
+                )
+            }
+        }
+
+        Text(
+            modifier = Modifier.constrainAs(desc) {
+                top.linkTo(titleStatus.bottom, margin = SpaceXs)
+                start.linkTo(titleStatus.start)
+                width = Dimension.fillToConstraints
+            },
+            text = option.desc,
+            style = SocialExitTheme.typography.bodyMedium,
+            color = SocialExitTheme.colors.onPrimaryContainer
+        )
+
+        Row(
+            modifier = Modifier.constrainAs(category) {
+                linkTo(top = desc.bottom, bottom = parent.bottom, bias = 1f)
+                start.linkTo(titleStatus.start)
+            },
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Text(
+                text = option.category,
+                style = SocialExitTheme.typography.bodySmall,
+                color = SocialExitTheme.colors.onSurfaceVariant
+            )
+            Spacer(modifier = Modifier.width(SpaceSm))
+            Box(
+                modifier = Modifier
+                    .size(SpaceXs)
+                    .background(
+                        color = SocialExitTheme.colors.onSurfaceVariant,
+                        shape = CircleShape
+                    )
+            )
+        }
+
+        Text(
+            modifier = Modifier.constrainAs(successRate) {
+                bottom.linkTo(category.bottom)
+                start.linkTo(category.end, margin = SpaceSm)
+            },
+            text = "${option.successRate}%",
+            style = SocialExitTheme.typography.bodySmall,
+            color = SocialExitTheme.colors.primary
+        )
+    }
 }
 
 /**
@@ -468,7 +543,11 @@ fun HomeScreenLightPreview() {
     }
 }
 
-@Preview(uiMode = UI_MODE_NIGHT_YES, showBackground = true)
+@Preview(
+    uiMode = UI_MODE_NIGHT_YES,
+    showBackground = true,
+    backgroundColor = 0xFF000000
+)
 @Composable
 fun HomeScreenNoButtonDarkPreview() {
     SocialExitTheme {
@@ -476,7 +555,11 @@ fun HomeScreenNoButtonDarkPreview() {
     }
 }
 
-@Preview(uiMode = UI_MODE_NIGHT_NO, showBackground = true)
+@Preview(
+    uiMode = UI_MODE_NIGHT_NO,
+    showBackground = true,
+    backgroundColor = 0xFFFFFFFF
+)
 @Composable
 fun HomeScreenNoButtonLightPreview() {
     SocialExitTheme {
