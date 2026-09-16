@@ -1,108 +1,63 @@
 package com.owlite.socialexit.core.designsystem.theme
 
+import android.os.Build
+import androidx.annotation.ChecksSdkIntAtLeast
 import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.compose.material3.ColorScheme
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.dynamicDarkColorScheme
+import androidx.compose.material3.dynamicLightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.ReadOnlyComposable
-
-/**
- * Theme.kt — Layer 3: Composition root
- *
- * Wires all token layers into a single SocialExitTheme composable.
- * Provides both M3 MaterialTheme and all custom CompositionLocals.
- *
- * Usage:
- *   SocialExitTheme {
- *       Scaffold { ... }
- *   }
- *
- * Token access in composables:
- *   MaterialTheme.colorScheme.primary ← M3 system tokens
- *   MaterialTheme.extendedColors.warning ← extended ramps
- *   MaterialTheme.semanticColors.armed ← guardian states
- *   MaterialTheme.categoryColors.homeContainer ← script categories
- *   MaterialTheme.badgeColors.activeContainer ← badge semantics
- *   MaterialTheme.surfaces.surface1 ← elevation stops
- *   MaterialTheme.content.accent ← text/icon roles
- *   MaterialTheme.borders.accent ← border strengths
- *   MaterialTheme.spacing.screenHorizontal ← spacing scale
- *   MaterialTheme.motion.pulseRingDuration ← animation tokens
- *   MaterialTheme.extendedShapes.pill ← shape overrides
- */
+import androidx.compose.ui.platform.LocalContext
 
 @Composable
 fun SocialExitTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
-    content: @Composable () -> Unit,
+    disableDynamicTheming: Boolean = true,
+    content: @Composable () -> Unit
 ) {
-    val colorScheme = if (darkTheme) {
-        SocialExitDarkColorScheme
-    } else {
-        SocialExitLightColorScheme
+    val colorScheme = when {
+        !disableDynamicTheming && supportsDynamicTheming() -> {
+            val context = LocalContext.current
+            if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
+        }
+
+        else -> if (darkTheme) SocialExitDarkColorScheme else SocialExitLightColorScheme
     }
+    val extendedColors = if (darkTheme) DarkExtendedColors else LightExtendedColors
+    val typography = SocialExitTypography()
 
     CompositionLocalProvider(
-        // Extended M3 ramps (amber, teal)
-        LocalExtendedColors provides
-                if (darkTheme) darkExtendedColors
-                else lightExtendedColors,
-
-        // Component-level semantic tokens
-        LocalGuardianStateColors provides if (darkTheme) darkGuardianStateColors else lightGuardianStateColors,
-        LocalCategoryColors provides if (darkTheme) darkCategoryColors else lightCategoryColors,
-        LocalBadgeColors provides if (darkTheme) darkBadgeColors else lightBadgeColors,
-        LocalSurfaceColors provides if (darkTheme) darkSurfaceColors else lightSurfaceColors,
-        LocalContentColors provides if (darkTheme) darkContentColors else lightContentColors,
-        LocalBorderColors provides if (darkTheme) darkBorderColors else lightBorderColors,
-
-        // Non-color tokens (same for both modes)
-        LocalSpacing provides SocialExitSpacing,
-        LocalMotion provides SocialExitMotion,
-        LocalExtendedShapes provides SocialExitExtendedShapes,
+        LocalSocialExitColors provides extendedColors,
+        LocalSocialExitTypography provides typography
     ) {
         MaterialTheme(
             colorScheme = colorScheme,
-            typography = SocialExitTypography,
-            shapes = SocialExitShapes,
-            content = content,
+            content = content
         )
     }
 }
 
-// MaterialTheme extension properties
-// Mirrors the Now In Android pattern so all tokens read as
-// MaterialTheme.x rather than LocalX.current.x
+object SocialExitTheme {
+    val colors: ColorScheme
+        @Composable
+        @ReadOnlyComposable
+        get() = MaterialTheme.colorScheme
 
-val MaterialTheme.extendedColors: ExtendedColors
-    @Composable @ReadOnlyComposable get() = LocalExtendedColors.current
+    val extendedColors: SocialExitExtendedColors
+        @Composable
+        @ReadOnlyComposable
+        get() = LocalSocialExitColors.current
 
-val MaterialTheme.semanticColors: GuardianStateColors
-    @Composable @ReadOnlyComposable get() = LocalGuardianStateColors.current
+    val typography: SocialExitTypography
+        @Composable
+        @ReadOnlyComposable
+        get() = LocalSocialExitTypography.current
 
-val MaterialTheme.categoryColors: CategoryColors
-    @Composable @ReadOnlyComposable get() = LocalCategoryColors.current
+    val spacing = SpacingTokens
+}
 
-val MaterialTheme.badgeColors: BadgeColors
-    @Composable @ReadOnlyComposable get() = LocalBadgeColors.current
-
-val MaterialTheme.surfaces: SurfaceColors
-    @Composable @ReadOnlyComposable get() = LocalSurfaceColors.current
-
-val MaterialTheme.content: ContentColors
-    @Composable @ReadOnlyComposable get() = LocalContentColors.current
-
-val MaterialTheme.borders: BorderColors
-    @Composable @ReadOnlyComposable get() = LocalBorderColors.current
-
-val MaterialTheme.spacing: Spacing
-    @Composable @ReadOnlyComposable get() = LocalSpacing.current
-
-val MaterialTheme.motion: MotionTokens
-    @Composable @ReadOnlyComposable get() = LocalMotion.current
-
-val MaterialTheme.extendedShapes: ExtendedShapes
-    @Composable @ReadOnlyComposable get() = LocalExtendedShapes.current
-
-val MaterialTheme.extendedTypography: ExtendedTypography
-    @Composable @ReadOnlyComposable get() = SocialExitExtendedTypography
+@ChecksSdkIntAtLeast(api = Build.VERSION_CODES.S)
+fun supportsDynamicTheming() = Build.VERSION.SDK_INT >= Build.VERSION_CODES.S
