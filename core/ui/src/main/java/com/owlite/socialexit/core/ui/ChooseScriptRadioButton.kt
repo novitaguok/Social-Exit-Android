@@ -87,7 +87,7 @@ fun ChooseScriptRadioButton(
         ) {
             Icon(
                 modifier = Modifier.size(SpaceXl),
-                painter = painterResource(option.icon),
+                painter = painterResource(option.iconRes),
                 tint = borderColor,
                 contentDescription = option.title
             )

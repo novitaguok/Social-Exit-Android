@@ -77,7 +77,7 @@ fun SettingsScreen() {
                         HorizontalDivider(
                             modifier = Modifier.padding(horizontal = SpaceLg),
                             thickness = 1.dp,
-                            color = SocialExitTheme.colors.outlineVariant
+                            color = SocialExitTheme.colors.outline
                         )
                     }
                 }

@@ -121,7 +121,7 @@ fun ScriptCategoryChip(category: String) {
 // TODO: move to data
 val dummyScript = listOf(
     ScriptOption(
-        icon = R.drawable.outline_360_24,
+        iconRes = R.drawable.outline_360_24,
         title = "Dummy Title",
         desc = "Dummy desc",
         category = "Home",
@@ -129,7 +129,7 @@ val dummyScript = listOf(
         isActive = true
     ),
     ScriptOption(
-        icon = R.drawable.outline_360_24,
+        iconRes = R.drawable.outline_360_24,
         title = "Dummy Title 2",
         desc = "Dummy desc 2",
         category = "Family",
@@ -137,7 +137,7 @@ val dummyScript = listOf(
         isActive = false
     ),
     ScriptOption(
-        icon = R.drawable.outline_360_24,
+        iconRes = R.drawable.outline_360_24,
         title = "Dummy Title 3",
         desc = "Dummy desc 3",
         category = "Home",
@@ -145,7 +145,7 @@ val dummyScript = listOf(
         isActive = false
     ),
     ScriptOption(
-        icon = R.drawable.outline_360_24,
+        iconRes = R.drawable.outline_360_24,
         title = "Dummy Title 4",
         desc = "Dummy desc 4",
         category = "Family",

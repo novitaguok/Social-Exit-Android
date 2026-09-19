@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="feature_onboarding_impl_step_1_title">1. Set your trigger</string>
+    <string name="feature_onboarding_impl_step_1_desc">Triple tap, whisper a word, or tap your watch.</string>
+    <string name="feature_onboarding_impl_step_2_title">2. Pick a script</string>
+    <string name="feature_onboarding_impl_step_2_desc">Realistic scenarios or write your own excuse.</string>
+    <string name="feature_onboarding_impl_step_3_title">3. Walk away</string>
+    <string name="feature_onboarding_impl_step_3_desc">Fake call fires in 30–90 seconds. AI talks.</string>
+    <string name="feature_onboarding_impl_get_started">GET STARTED</string>
+    <string name="feature_onboarding_impl_figure_out_myself">I\'ll figure it out myself.</string>
+</resources>

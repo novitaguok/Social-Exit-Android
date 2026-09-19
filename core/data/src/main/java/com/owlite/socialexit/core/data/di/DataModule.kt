@@ -1,5 +1,7 @@
 package com.owlite.socialexit.core.data.di
 
+import com.owlite.socialexit.core.data.repository.OfflineUserDataRepository
+import com.owlite.socialexit.core.data.repository.UserDataRepository
 import com.owlite.socialexit.core.data.util.ConnectivityManagerNetworkMonitor
 import com.owlite.socialexit.core.data.util.NetworkMonitor
 import dagger.Binds
@@ -14,4 +16,9 @@ abstract class DataModule {
     internal abstract fun bindsNetworkMonitor(
         networkMonitor: ConnectivityManagerNetworkMonitor
     ): NetworkMonitor
+
+    @Binds
+    internal abstract fun bindsUserDataRepository(
+        userDataRepository: OfflineUserDataRepository
+    ): UserDataRepository
 }
