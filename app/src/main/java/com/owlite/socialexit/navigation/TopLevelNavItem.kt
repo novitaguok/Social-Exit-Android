@@ -46,7 +46,7 @@ enum class TopLevelNavItem(
         unselectedIcon = Icons.Outlined.Settings,
         iconTextId = homeR.string.feature_home_api_title,
         titleTextId = homeR.string.feature_home_api_title
-    )
+    ),
 }
 
 val TOP_LEVEL_NAV_KEYS = mapOf(
