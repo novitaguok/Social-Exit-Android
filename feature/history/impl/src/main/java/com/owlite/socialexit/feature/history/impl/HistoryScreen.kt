@@ -34,7 +34,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import com.owlite.socialexit.core.designsystem.theme.SocialExitTheme
 import com.owlite.socialexit.core.designsystem.theme.SpacingTokens.Space2Xl
@@ -107,7 +106,7 @@ fun MetricCard(
     Column(
         modifier = modifier
             .background(
-                color = SocialExitTheme.colors.secondaryContainer,
+                color = SocialExitTheme.colors.surfaceContainer,
                 shape = RoundedCornerShape(SpaceMd)
             )
             .padding(SpaceLg)
@@ -120,7 +119,6 @@ fun MetricCard(
                 text = value,
                 color = valueColor,
                 style = SocialExitTheme.typography.displayLarge
-                    .copy(fontWeight = FontWeight.ExtraBold)
             )
             Icon(
                 imageVector = icon,
@@ -150,7 +148,7 @@ fun ProgressCard(
     Column(
         modifier = modifier
             .background(
-                color = SocialExitTheme.colors.secondaryContainer,
+                color = SocialExitTheme.colors.surfaceContainer,
                 shape = RoundedCornerShape(SpaceMd)
             )
             .padding(SpaceLg),
@@ -215,7 +213,7 @@ fun SectionRecentActivity() {
         HistoryCard(
             title = "Babysitter SOS — Mom",
             desc = "Urgent reminder about pickup window long text long text",
-            icon = R.drawable.outline_balance_24,
+            iconRes = R.drawable.outline_balance_24,
             dateTime = "Tue, 12:30",
             duration = "2m 14s",
         )
@@ -224,7 +222,7 @@ fun SectionRecentActivity() {
 
 @Composable
 fun HistoryCard(
-    @DrawableRes icon: Int,
+    @DrawableRes iconRes: Int,
     title: String,
     desc: String,
     dateTime: String,
@@ -236,7 +234,7 @@ fun HistoryCard(
             .fillMaxWidth()
             .height(IntrinsicSize.Min)
             .background(
-                color = SocialExitTheme.colors.secondaryContainer,
+                color = SocialExitTheme.colors.surfaceContainer,
                 shape = RoundedCornerShape(SpaceMd)
             )
             .padding(SpaceLg),
@@ -252,14 +250,14 @@ fun HistoryCard(
                 modifier = Modifier
                     .size(Space4Xl)
                     .background(
-                        color = SocialExitTheme.colors.secondary,
+                        color = SocialExitTheme.colors.surfaceBright,
                         shape = RoundedCornerShape(SpaceMd)
                     ),
                 contentAlignment = Alignment.Center
             ) {
                 Icon(
                     modifier = Modifier.size(SpaceXl),
-                    painter = painterResource(icon),
+                    painter = painterResource(iconRes),
                     tint = SocialExitTheme.colors.primary,
                     contentDescription = null
                 )

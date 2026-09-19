@@ -89,10 +89,10 @@ fun SeApp(
                                     imageVector =
                                         if (selected) tab.selectedIcon
                                         else tab.unselectedIcon,
-                                    contentDescription = stringResource(tab.iconTextId)
+                                    contentDescription = stringResource(tab.iconRes)
                                 )
                             },
-                            label = { Text(text = stringResource(tab.titleTextId)) },
+                            label = { Text(text = stringResource(tab.titleRes)) },
                         )
                     }
                 }

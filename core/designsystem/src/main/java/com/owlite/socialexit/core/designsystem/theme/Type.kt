@@ -15,7 +15,7 @@ data class SocialExitTypography(
     // Display & Headlines
     val displayLarge: TextStyle = TextStyle(
         fontFamily = HankenGroteskFamily,
-        fontWeight = FontWeight.Bold,
+        fontWeight = FontWeight.ExtraBold,
         fontSize = 34.sp,
         lineHeight = 40.sp,
         letterSpacing = (-0.5).sp

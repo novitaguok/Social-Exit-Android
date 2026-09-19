@@ -71,14 +71,14 @@ fun HomeScreen(
     ) {
         item {
             StatusCard(
-                status = stringResource(state.status) // TODO: remove hardcode
+                status = stringResource(state.statusRes) // TODO: remove hardcode
             )
         }
-        if (state.buttonLabel != null) {
+        if (state.buttonLabelRes != null) {
             item {
                 // TODO: remove hardcode
                 ArmButton(
-                    label = stringResource(state.buttonLabel),
+                    label = stringResource(state.buttonLabelRes),
                     onClick = {}
                 )
             }
@@ -95,29 +95,29 @@ fun HomeScreen(
 }
 
 enum class ArmState(
-    @StringRes val status: Int,
-    @StringRes val buttonLabel: Int? = null,
+    @StringRes val statusRes: Int,
+    @StringRes val buttonLabelRes: Int? = null,
     @Suppress("unused") val isButtonEnabled: Boolean? = null,
 ) {
     IDLE(
-        status = R.string.feature_home_impl_status_idle,
-        buttonLabel = R.string.feature_home_impl_button_general,
+        statusRes = R.string.feature_home_impl_status_idle,
+        buttonLabelRes = R.string.feature_home_impl_button_general,
         isButtonEnabled = true
     ),
     ARMED(
-        status = R.string.feature_home_impl_status_armed,
-        buttonLabel = R.string.feature_home_impl_button_error,
+        statusRes = R.string.feature_home_impl_status_armed,
+        buttonLabelRes = R.string.feature_home_impl_button_error,
         isButtonEnabled = true
     ),
-    CALLING(status = R.string.feature_home_impl_status_calling),
+    CALLING(statusRes = R.string.feature_home_impl_status_calling),
     COOLDOWN(
-        status = R.string.feature_home_impl_status_cooldown,
-        buttonLabel = R.string.feature_home_impl_button_general,
+        statusRes = R.string.feature_home_impl_status_cooldown,
+        buttonLabelRes = R.string.feature_home_impl_button_general,
         isButtonEnabled = false
     ),
     ERROR(
-        status = R.string.feature_home_impl_status_error,
-        buttonLabel = R.string.feature_home_impl_button_error,
+        statusRes = R.string.feature_home_impl_status_error,
+        buttonLabelRes = R.string.feature_home_impl_button_error,
         isButtonEnabled = true
     ),
 }
@@ -131,7 +131,7 @@ fun StatusCard(
         modifier = modifier
             .fillMaxWidth()
             .background(
-                color = SocialExitTheme.colors.secondaryContainer,
+                color = SocialExitTheme.colors.surfaceContainer,
                 shape = RoundedCornerShape(RadiusMd)
             ),
     ) {
@@ -294,7 +294,7 @@ fun TriggerMethodRadioButton(
 // TODO: move to data
 val dummyScript = listOf(
     ScriptOption(
-        icon = R.drawable.feature_home_impl_ic_android_black_24dp,
+        iconRes = R.drawable.feature_home_impl_ic_android_black_24dp,
         title = "Dummy Title",
         desc = "Dummy desc",
         category = "Home",
@@ -302,7 +302,7 @@ val dummyScript = listOf(
         isActive = true
     ),
     ScriptOption(
-        icon = R.drawable.feature_home_impl_ic_android_black_24dp,
+        iconRes = R.drawable.feature_home_impl_ic_android_black_24dp,
         title = "Dummy Title 2",
         desc = "Dummy desc 2",
         category = "Family",
@@ -310,7 +310,7 @@ val dummyScript = listOf(
         isActive = false
     ),
     ScriptOption(
-        icon = R.drawable.feature_home_impl_ic_android_black_24dp,
+        iconRes = R.drawable.feature_home_impl_ic_android_black_24dp,
         title = "Dummy Title 3",
         desc = "Dummy desc 3",
         category = "Home",
@@ -318,7 +318,7 @@ val dummyScript = listOf(
         isActive = false
     ),
     ScriptOption(
-        icon = R.drawable.feature_home_impl_ic_android_black_24dp,
+        iconRes = R.drawable.feature_home_impl_ic_android_black_24dp,
         title = "Dummy Title 4",
         desc = "Dummy desc 4",
         category = "Family",
