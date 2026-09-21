@@ -21,7 +21,7 @@ class AndroidFeatureImplConventionPlugin : Plugin<Project> {
 
             // TODO: check NIA
             dependencies {
-//                "implementation"(project(":core:ui"))
+                "implementation"(project(":core:ui"))
                 "implementation"(project(":core:designsystem"))
 
                 "implementation"(libs.findLibrary("androidx.lifecycle.runtime.compose").get())

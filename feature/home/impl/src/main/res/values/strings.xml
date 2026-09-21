@@ -12,5 +12,4 @@
     <string name="feature_home_impl_trigger_method">TRIGGER METHOD</string>
     <string name="feature_home_impl_choose_script">CHOOSE SCRIPT</string>
     <string name="feature_home_impl_manage_all">Manage all</string>
-    <string name="feature_home_impl_active">ACTIVE</string>
 </resources>

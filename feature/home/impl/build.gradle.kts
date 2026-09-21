@@ -11,6 +11,7 @@ android {
 dependencies {
     // TODO: check NIA -- import domain, etc
     implementation(projects.feature.home.api)
+    implementation(projects.feature.scripts.api)
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.constraintlayout.compose)
 
@@ -19,4 +20,7 @@ dependencies {
 
     androidTestImplementation(libs.bundles.androidx.compose.ui.test)
 //    androidTestImplementation(projects.core.testing)
+
+    // TODO: later remove this
+    implementation(projects.core.model)
 }
