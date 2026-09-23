@@ -11,10 +11,12 @@ import androidx.compose.material.icons.outlined.History
 import androidx.compose.material.icons.outlined.Settings
 import androidx.compose.material.icons.outlined.Shield
 import androidx.compose.ui.graphics.vector.ImageVector
+import com.owlite.socialexit.feature.history.api.navigation.HistoryNavKey
 import com.owlite.socialexit.feature.home.api.navigation.HomeNavKey
 import com.owlite.socialexit.feature.scripts.api.navigation.ScriptsNavKey
 import com.owlite.socialexit.feature.home.api.R as homeR
 import com.owlite.socialexit.feature.scripts.api.R as scriptsR
+import com.owlite.socialexit.feature.history.api.R as historyR
 
 enum class TopLevelNavItem(
     val selectedIcon: ImageVector,
@@ -39,8 +41,8 @@ enum class TopLevelNavItem(
     HISTORY(
         selectedIcon = Icons.Filled.History,
         unselectedIcon = Icons.Outlined.History,
-        iconTextId = homeR.string.feature_home_api_title,
-        titleTextId = homeR.string.feature_home_api_title
+        iconTextId = historyR.string.feature_history_api_title,
+        titleTextId = historyR.string.feature_history_api_title
     ),
 
     SETTINGS(
@@ -54,4 +56,5 @@ enum class TopLevelNavItem(
 val TOP_LEVEL_NAV_KEYS = mapOf(
     HomeNavKey to TopLevelNavItem.HOME,
     ScriptsNavKey to TopLevelNavItem.SCRIPTS,
+    HistoryNavKey to TopLevelNavItem.HISTORY,
 )

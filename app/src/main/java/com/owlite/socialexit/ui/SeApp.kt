@@ -25,6 +25,8 @@ import androidx.navigation3.ui.NavDisplay
 import com.owlite.socialexit.core.designsystem.theme.SocialExitTheme
 import com.owlite.socialexit.core.navigation.Navigator
 import com.owlite.socialexit.core.navigation.toEntries
+import com.owlite.socialexit.feature.history.api.navigation.HistoryNavKey
+import com.owlite.socialexit.feature.history.impl.navigation.historyEntry
 import com.owlite.socialexit.feature.home.api.navigation.HomeNavKey
 import com.owlite.socialexit.feature.home.impl.navigation.homeEntry
 import com.owlite.socialexit.feature.scripts.api.navigation.ScriptsNavKey
@@ -76,7 +78,7 @@ fun SeApp(
                                 when (tab) {
                                     TopLevelNavItem.HOME -> navigator.navigate(HomeNavKey)
                                     TopLevelNavItem.SCRIPTS -> navigator.navigate(ScriptsNavKey)
-                                    TopLevelNavItem.HISTORY -> TODO()
+                                    TopLevelNavItem.HISTORY -> navigator.navigate(HistoryNavKey)
                                     TopLevelNavItem.SETTINGS -> TODO()
                                 }
                             },
@@ -98,6 +100,7 @@ fun SeApp(
             val entryProvider = entryProvider {
                 homeEntry(navigator)
                 scriptsEntry(navigator)
+                historyEntry(navigator)
             }
 
             Column(
