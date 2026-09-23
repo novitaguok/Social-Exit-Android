@@ -6,7 +6,7 @@ class Navigator(val state: NavigationState) {
     fun navigate(key: NavKey) {
         when (key) {
             state.currentTopLevelKey -> clearSubStack()
-            state.topLevelKeys -> goToTopLevel(key)
+            in state.topLevelKeys -> goToTopLevel(key)
             else -> goToKey(key)
         }
     }

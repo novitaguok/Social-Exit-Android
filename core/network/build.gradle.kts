@@ -1,30 +1,25 @@
 plugins {
-    alias(libs.plugins.android.library)
+    alias(libs.plugins.socialexit.android.library)
+    alias(libs.plugins.socialexit.hilt)
+    id("kotlinx-serialization")
 }
 
 android {
+    buildFeatures {
+        buildConfig = true
+    }
     namespace = "com.owlite.socialexit.core.network"
-    compileSdk {
-        version = release(37)
-    }
-
-    defaultConfig {
-        minSdk = 27
-
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-    }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
-    }
-
 }
 
 dependencies {
-    implementation(libs.androidx.appcompat)
-    implementation(libs.androidx.core.ktx)
-    implementation(libs.material)
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
-    androidTestImplementation(libs.androidx.junit)
+    api(projects.core.common)
+    api(projects.core.model)
+
+    implementation(libs.kotlinx.serialization.json)
+    // TODO: see NiA
+//    implementation(libs.okhttp.logging)
+//    implementation(libs.retrofit.core)
+//    implementation(libs.retrofit.kotlin.serialization)
+
+    testImplementation(libs.kotlinx.coroutines.test)
 }

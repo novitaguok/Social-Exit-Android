@@ -37,9 +37,12 @@ android {
 dependencies {
     implementation(projects.core.data)
     implementation(projects.core.designsystem)
+    implementation(projects.core.model)
 
     implementation(projects.feature.home.api)
     implementation(projects.feature.home.impl)
+    implementation(projects.feature.scripts.api)
+    implementation(projects.feature.scripts.impl)
 
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.activity.compose)

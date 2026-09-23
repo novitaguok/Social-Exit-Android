@@ -1,8 +1,15 @@
 package com.owlite.socialexit.ui
 
+import androidx.compose.animation.EnterTransition
+import androidx.compose.animation.ExitTransition
+import androidx.compose.animation.togetherWith
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
+import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
@@ -10,11 +17,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.saveable.rememberSaveable
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.navigation3.runtime.entryProvider
@@ -22,7 +25,11 @@ import androidx.navigation3.ui.NavDisplay
 import com.owlite.socialexit.core.designsystem.theme.SocialExitTheme
 import com.owlite.socialexit.core.navigation.Navigator
 import com.owlite.socialexit.core.navigation.toEntries
+import com.owlite.socialexit.feature.home.api.navigation.HomeNavKey
 import com.owlite.socialexit.feature.home.impl.navigation.homeEntry
+import com.owlite.socialexit.feature.scripts.api.navigation.ScriptsNavKey
+import com.owlite.socialexit.feature.scripts.impl.navigation.scriptsEntry
+import com.owlite.socialexit.navigation.TOP_LEVEL_NAV_KEYS
 import com.owlite.socialexit.navigation.TopLevelNavItem
 
 @Composable
@@ -30,17 +37,34 @@ fun SeApp(
     appState: SeAppState,
     modifier: Modifier
 ) {
+    val navigator = remember(appState.navigationState) { Navigator(appState.navigationState) }
     val bottomNavItems = listOf(
         TopLevelNavItem.HOME,
         TopLevelNavItem.SCRIPTS,
         TopLevelNavItem.HISTORY,
         TopLevelNavItem.SETTINGS
     )
-    var currentTab by rememberSaveable { mutableStateOf(TopLevelNavItem.HOME) }
+    val currentTab =
+        TOP_LEVEL_NAV_KEYS[appState.navigationState.currentTopLevelKey]
+            ?: TopLevelNavItem.HOME
 
     Surface {
         Scaffold(
             modifier = modifier.background(color = SocialExitTheme.colors.background),
+            floatingActionButton = {
+                if (currentTab == TopLevelNavItem.HOME) {
+                    FloatingActionButton(
+                        shape = CircleShape,
+                        containerColor = SocialExitTheme.colors.primary,
+                        onClick = { /* TODO: dialog to create custom script */ }
+                    ) {
+                        Icon(
+                            imageVector = Icons.Default.Add,
+                            contentDescription = "Add script"
+                        )
+                    }
+                }
+            },
             bottomBar = {
                 NavigationBar {
                     bottomNavItems.forEach { tab ->
@@ -48,7 +72,14 @@ fun SeApp(
 
                         NavigationBarItem(
                             selected = selected,
-                            onClick = { currentTab = tab },
+                            onClick = {
+                                when (tab) {
+                                    TopLevelNavItem.HOME -> navigator.navigate(HomeNavKey)
+                                    TopLevelNavItem.SCRIPTS -> navigator.navigate(ScriptsNavKey)
+                                    TopLevelNavItem.HISTORY -> TODO()
+                                    TopLevelNavItem.SETTINGS -> TODO()
+                                }
+                            },
                             icon = {
                                 Icon(
                                     imageVector =
@@ -66,6 +97,7 @@ fun SeApp(
             val navigator = remember { Navigator(appState.navigationState) }
             val entryProvider = entryProvider {
                 homeEntry(navigator)
+                scriptsEntry(navigator)
             }
 
             Column(
@@ -73,7 +105,9 @@ fun SeApp(
             ) {
                 NavDisplay(
                     entries = appState.navigationState.toEntries(entryProvider),
-                    onBack = { navigator.goBack() }
+                    onBack = { navigator.goBack() },
+                    transitionSpec = { EnterTransition.None togetherWith ExitTransition.None },
+                    popTransitionSpec = { EnterTransition.None togetherWith ExitTransition.None }
                 )
             }
         }
