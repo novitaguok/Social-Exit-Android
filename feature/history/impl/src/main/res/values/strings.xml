@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="feature_history_impl_total_exits">TOTAL EXITS</string>
+    <string name="feature_history_impl_success_rate">SUCCESS RATE</string>
+    <string name="feature_history_impl_progress_card_label">Convincing exits this month</string>
+    <string name="feature_history_impl_progress_card_value">%d/%d</string>
+    <string name="feature_history_impl_recent_activity">RECENT ACTIVITY</string>
+</resources>

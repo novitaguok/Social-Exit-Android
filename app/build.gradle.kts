@@ -39,6 +39,8 @@ dependencies {
     implementation(projects.core.designsystem)
     implementation(projects.core.model)
 
+    implementation(projects.feature.history.api)
+    implementation(projects.feature.history.impl)
     implementation(projects.feature.home.api)
     implementation(projects.feature.home.impl)
     implementation(projects.feature.scripts.api)

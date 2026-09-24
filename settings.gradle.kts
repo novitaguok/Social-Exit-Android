@@ -37,6 +37,8 @@ include(":core:navigation")
 include(":core:network")
 include(":core:ui")
 
+include(":feature:history:api")
+include(":feature:history:impl")
 include(":feature:home:api")
 include(":feature:home:impl")
 include(":feature:scripts:api")

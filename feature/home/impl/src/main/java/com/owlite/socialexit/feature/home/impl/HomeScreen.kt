@@ -204,7 +204,9 @@ fun SectionTriggerMethod() {
 
     Column {
         Text(
-            text = stringResource(R.string.feature_home_impl_trigger_method)
+            text = stringResource(R.string.feature_home_impl_trigger_method),
+            style = SocialExitTheme.typography.labelLarge,
+            color = SocialExitTheme.colors.onPrimaryContainer
         )
         Spacer(modifier = Modifier.height(SpaceLg))
         TriggerMethodSelectionGroup(
@@ -339,7 +341,9 @@ fun SectionChooseScript(
             verticalAlignment = Alignment.CenterVertically
         ) {
             Text(
-                text = stringResource(R.string.feature_home_impl_choose_script)
+                text = stringResource(R.string.feature_home_impl_choose_script),
+                style = SocialExitTheme.typography.labelLarge,
+                color = SocialExitTheme.colors.onPrimaryContainer
             )
             Text(
                 modifier = Modifier
@@ -388,7 +392,11 @@ fun ChooseScriptSelectionGroup(
 /**
  * Previews
  */
-@Preview(uiMode = UI_MODE_NIGHT_YES, showBackground = true)
+@Preview(
+    uiMode = UI_MODE_NIGHT_YES,
+    showBackground = true,
+    backgroundColor = 0xFF000000
+)
 @Composable
 fun HomeScreenDarkPreview() {
     SocialExitTheme {
