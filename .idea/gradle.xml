@@ -43,6 +43,9 @@
             <option value="$PROJECT_DIR$/feature/scripts" />
             <option value="$PROJECT_DIR$/feature/scripts/api" />
             <option value="$PROJECT_DIR$/feature/scripts/impl" />
+            <option value="$PROJECT_DIR$/feature/settings" />
+            <option value="$PROJECT_DIR$/feature/settings/api" />
+            <option value="$PROJECT_DIR$/feature/settings/impl" />
           </set>
         </option>
       </GradleProjectSettings>

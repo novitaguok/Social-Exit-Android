@@ -105,13 +105,13 @@ fun ScriptCategoryChip(category: String) {
     Text(
         modifier = Modifier
             .background(
-                color = SocialExitTheme.colors.secondary,
+                color = SocialExitTheme.colors.surfaceContainer,
                 shape = RoundedCornerShape(RadiusFull)
             )
             .padding(vertical = SpaceSm, horizontal = SpaceXl),
         text = category,
         style = SocialExitTheme.typography.labelOverline,
-        color = SocialExitTheme.colors.onSecondary
+        color = SocialExitTheme.colors.onSecondaryContainer
     )
 }
 
@@ -179,22 +179,6 @@ fun ChooseScriptSelectionGroup(
 /**
  * Previews
  */
-@Preview(uiMode = UI_MODE_NIGHT_YES, showBackground = true)
-@Composable
-fun ScriptsScreenDarkPreview() {
-    SocialExitTheme {
-        ScriptsScreen()
-    }
-}
-
-@Preview(uiMode = UI_MODE_NIGHT_NO, showBackground = true)
-@Composable
-fun ScriptsScreenLightPreview() {
-    SocialExitTheme {
-        ScriptsScreen()
-    }
-}
-
 @Preview(
     uiMode = UI_MODE_NIGHT_YES,
     showBackground = true,

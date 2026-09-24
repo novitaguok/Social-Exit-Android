@@ -31,6 +31,8 @@ import com.owlite.socialexit.feature.home.api.navigation.HomeNavKey
 import com.owlite.socialexit.feature.home.impl.navigation.homeEntry
 import com.owlite.socialexit.feature.scripts.api.navigation.ScriptsNavKey
 import com.owlite.socialexit.feature.scripts.impl.navigation.scriptsEntry
+import com.owlite.socialexit.feature.settings.api.navigation.SettingsNavKey
+import com.owlite.socialexit.feature.settings.impl.navigation.settingsEntry
 import com.owlite.socialexit.navigation.TOP_LEVEL_NAV_KEYS
 import com.owlite.socialexit.navigation.TopLevelNavItem
 
@@ -79,7 +81,7 @@ fun SeApp(
                                     TopLevelNavItem.HOME -> navigator.navigate(HomeNavKey)
                                     TopLevelNavItem.SCRIPTS -> navigator.navigate(ScriptsNavKey)
                                     TopLevelNavItem.HISTORY -> navigator.navigate(HistoryNavKey)
-                                    TopLevelNavItem.SETTINGS -> TODO()
+                                    TopLevelNavItem.SETTINGS -> navigator.navigate(SettingsNavKey)
                                 }
                             },
                             icon = {
@@ -101,6 +103,7 @@ fun SeApp(
                 homeEntry(navigator)
                 scriptsEntry(navigator)
                 historyEntry(navigator)
+                settingsEntry(navigator)
             }
 
             Column(
