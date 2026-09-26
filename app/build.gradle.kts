@@ -45,6 +45,8 @@ dependencies {
     implementation(projects.feature.home.impl)
     implementation(projects.feature.scripts.api)
     implementation(projects.feature.scripts.impl)
+    implementation(projects.feature.settings.api)
+    implementation(projects.feature.settings.impl)
 
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.activity.compose)

@@ -45,15 +45,19 @@ fun ChooseScriptRadioButton(
     modifier: Modifier = Modifier
 ) {
     val borderWidth = if (isSelected) SpaceXxs else 1.dp
-    val color =
+    val borderColor =
         if (isSelected) SocialExitTheme.colors.primary
-        else SocialExitTheme.colors.secondary
+        else SocialExitTheme.colors.surfaceContainer
 
     ConstraintLayout(
         modifier = modifier
             .border(
                 width = borderWidth,
-                color = color,
+                color = borderColor,
+                shape = RoundedCornerShape(SpaceMd)
+            )
+            .background(
+                color = SocialExitTheme.colors.surfaceContainer,
                 shape = RoundedCornerShape(SpaceMd)
             )
             .height(108.dp)
@@ -72,7 +76,7 @@ fun ChooseScriptRadioButton(
             modifier = Modifier
                 .size(Space4Xl)
                 .background(
-                    color = SocialExitTheme.colors.onBackground,
+                    color = SocialExitTheme.colors.surfaceBright,
                     shape = RoundedCornerShape(SpaceMd)
                 )
                 .constrainAs(icon) {
@@ -84,7 +88,7 @@ fun ChooseScriptRadioButton(
             Icon(
                 modifier = Modifier.size(SpaceXl),
                 painter = painterResource(option.icon),
-                tint = color,
+                tint = borderColor,
                 contentDescription = option.title
             )
         }
@@ -101,7 +105,8 @@ fun ChooseScriptRadioButton(
         ) {
             Text(
                 text = option.title,
-                style = SocialExitTheme.typography.bodyLarge
+                style = SocialExitTheme.typography.bodyLarge,
+                color = SocialExitTheme.colors.onSecondaryContainer
             )
             if (isSelected) {
                 Text(
